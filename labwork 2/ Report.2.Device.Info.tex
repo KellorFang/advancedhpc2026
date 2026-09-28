@@ -1,0 +1,26 @@
+\documentclass[11pt]{article}
+\usepackage[T5]{fontenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+
+\title{Labwork 2: GPU Device Info}
+\author{Phạm Đỗ Ngọc Minh -- 2540075}
+\date{}
+
+\begin{document}
+\maketitle
+
+My laptop is a MacBook Pro with an Apple M1 chip. Its GPU is not an NVIDIA GPU,
+so \texttt{numba.cuda} cannot be used. I followed the same steps with Apple's
+Metal API instead (\texttt{gpu\_info\_mac.py}): list the GPUs, select the default
+one, then read its id, name, core info and memory info. Metal does not report
+the core count, so it is read from the IORegistry (\texttt{ioreg}); one Apple GPU
+core plays the role of a CUDA multiprocessor and contains 128 ALUs.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.85\textwidth]{../gpuinformation.png}
+  \caption{GPU information of the Apple M1}
+\end{figure}
+
+\end{document}
